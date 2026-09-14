@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CBQ Client Brief Questionnaire — collect everything you need from clients before building any website.">
+  <title>CBQ Client Brief Questionnaire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <div class="logo">
+        <span class="logo-mark">CBQ</span>
+        <span class="logo-text">Client Brief Questionnaire</span>
+      </div>
+      <a href="#questionnaire" class="nav-cta">Start Questionnaire</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <p class="hero-tag">CBQ · Website discovery tool</p>
+        <h1>Tell us what you want on <em>your</em> website</h1>
+        <p class="hero-sub">
+          Whether you're building a site for real estate, cleaning, a restaurant, a portfolio,
+          or any business — this questionnaire captures your goals, content, design, and features
+          so we can build exactly what you need.
+        </p>
+        <a href="#questionnaire" class="btn btn-primary">Fill Out Questionnaire</a>
+        <div class="hero-tags">
+          <span>Housing</span>
+          <span>Cleaning</span>
+          <span>Restaurants</span>
+          <span>Portfolios</span>
+          <span>E-commerce</span>
+          <span>Any business</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="questionnaire" class="questionnaire">
+      <div class="container">
+        <div class="questionnaire-header">
+          <h2>CBQ Client Brief Questionnaire</h2>
+          <p>Answer as much as you can — the more detail, the better the website we can build for you.</p>
+          <p class="questionnaire-note">When you're done, download your brief and send it to us.</p>
+        </div>
+
+        <div class="progress-bar" aria-hidden="true">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="progress-text" id="progressText">Section 1 of 7</p>
+
+        <form id="clientBriefForm" class="form-card" novalidate>
+          <!-- 1. About You & Your Business -->
+          <fieldset class="form-step active" data-step="1">
+            <legend>About You &amp; Your Business</legend>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="clientName">Your name <span class="required">*</span></label>
+                <input type="text" id="clientName" name="clientName" required placeholder="Jane Smith">
+              </div>
+              <div class="field">
+                <label for="businessName">Business / brand name <span class="required">*</span></label>
+                <input type="text" id="businessName" name="businessName" required placeholder="Your Business Name">
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="you@business.com">
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="websiteType">What type of website do you need? <span class="required">*</span></label>
+                <select id="websiteType" name="websiteType" required>
+                  <option value="">Select type</option>
+                  <option value="real-estate">Real estate / housing</option>
+                  <option value="cleaning">Cleaning services</option>
+                  <option value="restaurant">Restaurant / food</option>
+                  <option value="portfolio">Portfolio / personal brand</option>
+                  <option value="ecommerce">E-commerce / online store</option>
+                  <option value="saas">SaaS / app landing page</option>
+                  <option value="healthcare">Healthcare / wellness</option>
+                  <option value="agency">Agency / professional services</option>
+                  <option value="nonprofit">Nonprofit / community</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="industry">Industry or niche</label>
+                <input type="text" id="industry" name="industry" placeholder="e.g. residential cleaning, luxury homes, bakery">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="serviceArea">Location / areas you serve</label>
+              <textarea id="serviceArea" name="serviceArea" rows="2" placeholder="City, region, or whether you serve customers online globally"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="businessDescription">Describe your business in 2–3 sentences</label>
+              <textarea id="businessDescription" name="businessDescription" rows="3" placeholder="What you do, who you help, and what makes you different"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- 2. Website Goals -->
+          <fieldset class="form-step" data-step="2">
+            <legend>Website Goals</legend>
+
+            <div class="field">
+              <label>What is the main goal of this website?</label>
+              <div class="checkbox-group">
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="leads"> Capture leads / contact info</label>
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="book-consultation"> Book appointments or calls</label>
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="sell"> Sell products or services online</label>
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="showcase"> Showcase work / portfolio</label>
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="build-trust"> Build trust and credibility</label>
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="inform"> Educate or inform visitors</label>
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="hire"> Recruit or hire staff</label>
+                <label class="checkbox-pill"><input type="checkbox" name="pageGoals" value="brand"> Build brand awareness</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="primaryAction">What is the #1 action you want visitors to take?</label>
+              <input type="text" id="primaryAction" name="primaryAction" placeholder="e.g. Request a quote, book a call, buy a product, view listings">
+            </div>
+
+            <div class="field">
+              <label for="targetAudience">Who is your ideal customer or visitor?</label>
+              <textarea id="targetAudience" name="targetAudience" rows="3" placeholder="Age, location, needs, budget, lifestyle, or business type..."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="uniqueValue">What makes you different from competitors?</label>
+              <textarea id="uniqueValue" name="uniqueValue" rows="2" placeholder="Your unique selling point"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="competitors">Competitor websites (optional)</label>
+              <textarea id="competitors" name="competitors" rows="2" placeholder="Links or names of businesses you compete with"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- 3. Content & Sections -->
+          <fieldset class="form-step" data-step="3">
+            <legend>Content &amp; Sections</legend>
+
+            <div class="field">
+              <label>Which sections do you want on the website?</label>
+              <div class="checkbox-group">
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="hero"> Hero banner with headline</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="about"> About you / your team</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="services"> Services or offerings</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="portfolio"> Portfolio / gallery</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="pricing"> Pricing or packages</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="testimonials"> Testimonials / reviews</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="process"> How it works / process</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="faq"> FAQ</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="contact"> Contact form</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="map"> Map / service area</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="blog"> Blog or resources</label>
+                <label class="checkbox-pill"><input type="checkbox" name="sections" value="social"> Social media links</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="headline">Do you have a headline or tagline in mind?</label>
+              <input type="text" id="headline" name="headline" placeholder="e.g. Professional cleaning you can trust">
+            </div>
+
+            <div class="field">
+              <label for="keyMessages">Key messages you want visitors to remember</label>
+              <textarea id="keyMessages" name="keyMessages" rows="3" placeholder="Bullet points or phrases you want highlighted"></textarea>
+            </div>
+
+            <div class="field">
+              <label>Do you have content ready?</label>
+              <div class="checkbox-group">
+                <label class="checkbox-pill"><input type="checkbox" name="contentReady" value="logo"> Logo</label>
+                <label class="checkbox-pill"><input type="checkbox" name="contentReady" value="photos"> Photos / images</label>
+                <label class="checkbox-pill"><input type="checkbox" name="contentReady" value="copy"> Written copy / text</label>
+                <label class="checkbox-pill"><input type="checkbox" name="contentReady" value="bio"> Bio / about text</label>
+                <label class="checkbox-pill"><input type="checkbox" name="contentReady" value="testimonials"> Testimonials</label>
+                <label class="checkbox-pill"><input type="checkbox" name="contentReady" value="video"> Video content</label>
+                <label class="checkbox-pill"><input type="checkbox" name="contentReady" value="none"> Nothing yet — need help</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- 4. Design & Branding -->
+          <fieldset class="form-step" data-step="4">
+            <legend>Design &amp; Branding</legend>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="brandColors">Brand colors (if any)</label>
+                <input type="text" id="brandColors" name="brandColors" placeholder="e.g. navy blue and gold">
+              </div>
+              <div class="field">
+                <label for="designStyle">Design style you prefer</label>
+                <select id="designStyle" name="designStyle">
+                  <option value="">Select a style</option>
+                  <option value="modern">Modern &amp; clean</option>
+                  <option value="luxury">Luxury &amp; elegant</option>
+                  <option value="warm">Warm &amp; friendly</option>
+                  <option value="bold">Bold &amp; energetic</option>
+                  <option value="minimal">Minimal &amp; simple</option>
+                  <option value="traditional">Traditional &amp; classic</option>
+                  <option value="playful">Playful &amp; creative</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="inspirationSites">Websites you like (paste URLs)</label>
+              <textarea id="inspirationSites" name="inspirationSites" rows="2" placeholder="Links to sites whose look and feel you admire"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="avoidDesign">Anything you do NOT want?</label>
+              <textarea id="avoidDesign" name="avoidDesign" rows="2" placeholder="Colors, styles, or layouts to avoid"></textarea>
+            </div>
+
+            <div class="field">
+              <label>Do you have brand assets to provide?</label>
+              <div class="checkbox-group">
+                <label class="checkbox-pill"><input type="checkbox" name="brandAssets" value="logo-file"> Logo file</label>
+                <label class="checkbox-pill"><input type="checkbox" name="brandAssets" value="fonts"> Brand fonts</label>
+                <label class="checkbox-pill"><input type="checkbox" name="brandAssets" value="style-guide"> Style guide</label>
+                <label class="checkbox-pill"><input type="checkbox" name="brandAssets" value="photos"> Professional photos</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- 5. Features & Functionality -->
+          <fieldset class="form-step" data-step="5">
+            <legend>Features &amp; Functionality</legend>
+
+            <div class="field">
+              <label>What features do you need?</label>
+              <div class="checkbox-group">
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="contact-form"> Contact / lead form</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="quote-form"> Quote / estimate request</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="scheduling"> Online booking / scheduling</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="live-chat"> Live chat</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="ecommerce"> Online payments / shop</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="gallery"> Photo / video gallery</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="email-signup"> Email newsletter signup</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="video"> Video background or embed</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="reviews"> Google reviews integration</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="multilingual"> Multiple languages</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="membership"> Login / member area</label>
+                <label class="checkbox-pill"><input type="checkbox" name="features" value="blog-cms"> Blog you can update yourself</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="formFields">What info should forms collect?</label>
+              <textarea id="formFields" name="formFields" rows="2" placeholder="Name, email, phone, service type, budget, message..."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="integrations">Any tools to connect?</label>
+              <input type="text" id="integrations" name="integrations" placeholder="CRM, Mailchimp, Stripe, Calendly, Zapier, Google Analytics...">
+            </div>
+
+            <div class="field">
+              <label>Social media accounts to link</label>
+              <div class="checkbox-group">
+                <label class="checkbox-pill"><input type="checkbox" name="socialMedia" value="facebook"> Facebook</label>
+                <label class="checkbox-pill"><input type="checkbox" name="socialMedia" value="instagram"> Instagram</label>
+                <label class="checkbox-pill"><input type="checkbox" name="socialMedia" value="linkedin"> LinkedIn</label>
+                <label class="checkbox-pill"><input type="checkbox" name="socialMedia" value="youtube"> YouTube</label>
+                <label class="checkbox-pill"><input type="checkbox" name="socialMedia" value="tiktok"> TikTok</label>
+                <label class="checkbox-pill"><input type="checkbox" name="socialMedia" value="x"> X (Twitter)</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- 6. Technical & Launch -->
+          <fieldset class="form-step" data-step="6">
+            <legend>Technical &amp; Launch</legend>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="domain">Do you have a domain name?</label>
+                <select id="domain" name="domain">
+                  <option value="">Select one</option>
+                  <option value="yes-have">Yes, I already own one</option>
+                  <option value="need-help">No, need help choosing</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="domainName">Domain (if you have one)</label>
+                <input type="text" id="domainName" name="domainName" placeholder="www.yourbusiness.com">
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="hosting">Do you have website hosting?</label>
+                <select id="hosting" name="hosting">
+                  <option value="">Select one</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No, need setup</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="existingSite">Do you have an existing website?</label>
+                <select id="existingSite" name="existingSite">
+                  <option value="">Select one</option>
+                  <option value="replace">Yes — replace it</option>
+                  <option value="redesign">Yes — redesign it</option>
+                  <option value="add">Yes — add new pages</option>
+                  <option value="no">No — starting from scratch</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="launchDate">When do you need this live?</label>
+              <select id="launchDate" name="launchDate">
+                <option value="">Select timeline</option>
+                <option value="asap">ASAP</option>
+                <option value="2-weeks">Within 2 weeks</option>
+                <option value="1-month">Within 1 month</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- 7. Budget & Final Notes -->
+          <fieldset class="form-step" data-step="7">
+            <legend>Budget &amp; Final Notes</legend>
+
+            <div class="field">
+              <label for="budget">What is your budget for this website?</label>
+              <select id="budget" name="budget">
+                <option value="">Select range</option>
+                <option value="under-500">Under $500</option>
+                <option value="500-1000">$500 – $1,000</option>
+                <option value="1000-2500">$1,000 – $2,500</option>
+                <option value="2500-5000">$2,500 – $5,000</option>
+                <option value="5000+">$5,000+</option>
+                <option value="discuss">Prefer to discuss</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="ongoingNeeds">Any ongoing needs after launch?</label>
+              <div class="checkbox-group">
+                <label class="checkbox-pill"><input type="checkbox" name="ongoingNeeds" value="updates"> Content updates</label>
+                <label class="checkbox-pill"><input type="checkbox" name="ongoingNeeds" value="seo"> SEO</label>
+                <label class="checkbox-pill"><input type="checkbox" name="ongoingNeeds" value="ads"> Paid ads landing pages</label>
+                <label class="checkbox-pill"><input type="checkbox" name="ongoingNeeds" value="maintenance"> Monthly maintenance</label>
+                <label class="checkbox-pill"><input type="checkbox" name="ongoingNeeds" value="none"> None — one-time build</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="additionalNotes">Anything else we should know?</label>
+              <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Special requests, must-haves, pages we missed, or anything specific to your industry..."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="referralSource">How did you find us?</label>
+              <select id="referralSource" name="referralSource">
+                <option value="">Select one</option>
+                <option value="referral">Referral</option>
+                <option value="google">Google</option>
+                <option value="social">Social media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="prevBtn" disabled>Back</button>
+            <button type="button" class="btn btn-primary" id="nextBtn">Continue</button>
+            <button type="submit" class="btn btn-primary hidden" id="submitBtn">Finish &amp; Download</button>
+          </div>
+        </form>
+
+        <div id="successMessage" class="success-message hidden">
+          <div class="success-icon">✓</div>
+          <h3>All done!</h3>
+          <p class="success-lead">Your CBQ client brief has been saved to a file on your computer.</p>
+
+          <div class="send-instructions">
+            <h4>Next step — send it to us</h4>
+            <ol>
+              <li>Find the downloaded file (<strong id="downloadedFilename">client-brief.txt</strong>)</li>
+              <li>Send it to <strong id="designerEmail">your email</strong></li>
+              <li>We'll review everything and get back to you</li>
+            </ol>
+          </div>
+
+          <div class="submission-actions">
+            <button type="button" class="btn btn-primary" id="downloadTxtBtn">Download Again</button>
+            <button type="button" class="btn btn-secondary" id="copyBtn">Copy Answers Instead</button>
+          </div>
+
+          <details class="summary-details">
+            <summary>Preview your answers</summary>
+            <div id="submissionSummary" class="submission-summary"></div>
+          </details>
+
+          <button type="button" class="btn btn-secondary" id="resetBtn">Start over</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>CBQ</strong> · Client Brief Questionnaire · Built for web designers &amp; developers</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
