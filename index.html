@@ -49,7 +49,7 @@
         <div class="questionnaire-header">
           <h2>CBQ Client Brief Questionnaire</h2>
           <p>Answer as much as you can — the more detail, the better the website we can build for you.</p>
-          <p class="questionnaire-note">When you're done, download your brief and send it to us.</p>
+          <p class="questionnaire-note">When you're done, your brief is sent to us automatically. You can also download a copy.</p>
         </div>
 
         <div class="progress-bar" aria-hidden="true">
@@ -395,27 +395,27 @@
           <div class="form-actions">
             <button type="button" class="btn btn-secondary" id="prevBtn" disabled>Back</button>
             <button type="button" class="btn btn-primary" id="nextBtn">Continue</button>
-            <button type="submit" class="btn btn-primary hidden" id="submitBtn">Finish &amp; Download</button>
+            <button type="submit" class="btn btn-primary hidden" id="submitBtn">Send Brief</button>
           </div>
         </form>
 
         <div id="successMessage" class="success-message hidden">
-          <div class="success-icon">✓</div>
-          <h3>All done!</h3>
-          <p class="success-lead">Your CBQ client brief has been saved to a file on your computer.</p>
+          <div class="success-icon" id="successIcon">✓</div>
+          <h3 id="successTitle">Brief sent!</h3>
+          <p class="success-lead" id="successLead">Your answers were emailed to us. We'll review them and get back to you.</p>
 
-          <div class="send-instructions">
-            <h4>Next step — send it to us</h4>
+          <div class="send-instructions" id="sendInstructions">
+            <h4>What happens next</h4>
             <ol>
-              <li>Find the downloaded file (<strong id="downloadedFilename">client-brief.txt</strong>)</li>
-              <li>Send it to <strong id="designerEmail">your email</strong></li>
-              <li>We'll review everything and get back to you</li>
+              <li>We receive your brief at <strong id="designerEmail">your email</strong></li>
+              <li>We'll review your answers and follow up</li>
+              <li>Optional: download a copy for your records</li>
             </ol>
           </div>
 
           <div class="submission-actions">
-            <button type="button" class="btn btn-primary" id="downloadTxtBtn">Download Again</button>
-            <button type="button" class="btn btn-secondary" id="copyBtn">Copy Answers Instead</button>
+            <button type="button" class="btn btn-primary" id="downloadTxtBtn">Download a Copy</button>
+            <button type="button" class="btn btn-secondary" id="copyBtn">Copy Answers</button>
           </div>
 
           <details class="summary-details">

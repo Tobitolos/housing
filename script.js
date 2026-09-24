@@ -53,11 +53,14 @@
   const submitBtn = document.getElementById("submitBtn");
   const successMessage = document.getElementById("successMessage");
   const submissionSummary = document.getElementById("submissionSummary");
-  const downloadedFilename = document.getElementById("downloadedFilename");
   const designerEmail = document.getElementById("designerEmail");
   const resetBtn = document.getElementById("resetBtn");
   const downloadTxtBtn = document.getElementById("downloadTxtBtn");
   const copyBtn = document.getElementById("copyBtn");
+  const successIcon = document.getElementById("successIcon");
+  const successTitle = document.getElementById("successTitle");
+  const successLead = document.getElementById("successLead");
+  const sendInstructions = document.getElementById("sendInstructions");
 
   designerEmail.textContent = YOUR_EMAIL;
 
@@ -157,16 +160,11 @@
       lines.push("");
     });
 
-    lines.push("---");
-    lines.push(`Please send this file to: ${YOUR_EMAIL}`);
-
     return lines.join("\n");
   }
 
   function downloadBrief(data) {
     const filename = getFilename(data);
-    downloadedFilename.textContent = filename;
-
     const blob = new Blob([buildTextReport(data)], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -174,6 +172,78 @@
     link.download = filename;
     link.click();
     URL.revokeObjectURL(url);
+  }
+
+  function emailPayload(data) {
+    const payload = {
+      _subject: `New CBQ brief: ${data.businessName || data.clientName || "Website project"}`,
+      _template: "table",
+      _captcha: "false",
+      _replyto: data.email || YOUR_EMAIL,
+      name: data.clientName || "",
+      email: data.email || "",
+      message: buildTextReport(data),
+    };
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (key === "submittedAt") return;
+      payload[FIELD_LABELS[key] || key] = formatValue(value);
+    });
+
+    return payload;
+  }
+
+  async function sendBriefEmail(data) {
+    const response = await fetch(`https://formsubmit.co/ajax/${YOUR_EMAIL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(emailPayload(data)),
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === "false" || result.success === false) {
+      throw new Error(result.message || "Email delivery failed");
+    }
+  }
+
+  function showSuccess(sent) {
+    successIcon.textContent = sent ? "✓" : "!";
+    successIcon.classList.toggle("error", !sent);
+    sendInstructions.classList.toggle("error", !sent);
+
+    if (sent) {
+      successTitle.textContent = "Brief sent!";
+      successLead.textContent =
+        "Your answers were emailed to us. We'll review them and get back to you.";
+      sendInstructions.innerHTML = `
+        <h4>What happens next</h4>
+        <ol>
+          <li>We received your brief at <strong>${YOUR_EMAIL}</strong></li>
+          <li>We'll review your answers and follow up</li>
+          <li>Optional: download a copy for your records</li>
+        </ol>
+      `;
+    } else {
+      successTitle.textContent = "Couldn't send automatically";
+      successLead.textContent =
+        "Please download your brief and email it to us so we still get your answers.";
+      sendInstructions.innerHTML = `
+        <h4>Send it manually</h4>
+        <ol>
+          <li>Click <strong>Download a Copy</strong></li>
+          <li>Email the file to <strong>${YOUR_EMAIL}</strong></li>
+          <li>We'll review everything and get back to you</li>
+        </ol>
+      `;
+      downloadBrief(lastSubmission);
+    }
+
+    form.classList.add("hidden");
+    successMessage.classList.remove("hidden");
+    document.getElementById("questionnaire").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   nextBtn.addEventListener("click", () => {
@@ -193,16 +263,24 @@
     }
   });
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     lastSubmission = collectFormData();
     submissionSummary.innerHTML = buildSummaryHtml(lastSubmission);
-    downloadBrief(lastSubmission);
 
-    form.classList.add("hidden");
-    successMessage.classList.remove("hidden");
-    document.getElementById("questionnaire").scrollIntoView({ behavior: "smooth", block: "start" });
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    try {
+      await sendBriefEmail(lastSubmission);
+      showSuccess(true);
+    } catch {
+      showSuccess(false);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Brief";
+    }
   });
 
   downloadTxtBtn.addEventListener("click", () => {
@@ -210,7 +288,7 @@
     downloadBrief(lastSubmission);
     downloadTxtBtn.textContent = "Downloaded!";
     setTimeout(() => {
-      downloadTxtBtn.textContent = "Download Again";
+      downloadTxtBtn.textContent = "Download a Copy";
     }, 2000);
   });
 
@@ -221,7 +299,7 @@
       await navigator.clipboard.writeText(buildTextReport(lastSubmission));
       copyBtn.textContent = "Copied!";
       setTimeout(() => {
-        copyBtn.textContent = "Copy Answers Instead";
+        copyBtn.textContent = "Copy Answers";
       }, 2000);
     } catch {
       copyBtn.textContent = "Copy failed — use download";
@@ -233,6 +311,8 @@
     currentStep = 1;
     lastSubmission = null;
     submissionSummary.innerHTML = "";
+    successIcon.classList.remove("error");
+    sendInstructions.classList.remove("error");
     showStep(1);
     form.classList.remove("hidden");
     successMessage.classList.add("hidden");
